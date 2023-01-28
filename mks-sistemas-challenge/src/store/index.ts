@@ -1,4 +1,4 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice, configureStore, current } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "@/interfaces/Product";
 
@@ -27,18 +27,51 @@ const itemsCounterSlice = createSlice({
     cartToggle(state) {
       state.showCart = !state.showCart;
     },
-    addProduct(state, action: PayloadAction<Product>) {
-      const item = [...state.products].find(
+    incrementProduct(state, action: PayloadAction<Product>) {
+      const products = [...state.products];
+
+      const product = products.find(
         (product) => product.id === action.payload.id
       );
-      console.log("item", item);
-      if (item) {
-        if (item.amount) item.amount++;
+
+      if (product) {
+        const updatedProduct = {
+          ...product,
+          amount: product.amount ? product.amount + 1 : 0,
+        };
+
+        state.products = state.products.map((product) => {
+          if (product.id === action.payload.id) return updatedProduct;
+          return product;
+        });
       } else {
-        // state.products.push(action.payload);
         state.products = [...state.products, action.payload];
       }
-      console.log("state.products[0].amount", state.products);
+    },
+    decrementProduct(state, action: PayloadAction<Product>) {
+      const products = [...state.products];
+
+      const product = products.find(
+        (product) => product.id === action.payload.id
+      );
+
+      if (product && product.amount) {
+        if (product.amount > 1) {
+          const updatedProduct = {
+            ...product,
+            amount: product.amount ? product.amount - 1 : 0,
+          };
+
+          state.products = state.products.map((product) => {
+            if (product.id === action.payload.id) return updatedProduct;
+            return product;
+          });
+        } else if (product.amount <= 1) {
+          state.products = state.products.filter(
+            (product) => product.id !== action.payload.id
+          );
+        }
+      }
     },
   },
 });
