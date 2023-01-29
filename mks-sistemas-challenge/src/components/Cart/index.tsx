@@ -52,7 +52,7 @@ const Cart: React.FC = () => {
         <div className="cart-items-container">{cartItems}</div>
       </div>
       <div>
-        <div>
+        <div className="cart-total-price">
           <span>Total: </span>
           <span>{totalPrice}</span>
         </div>

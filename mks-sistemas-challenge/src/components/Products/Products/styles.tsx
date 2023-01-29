@@ -7,7 +7,7 @@ const ProductsContainer = styled.div`
   position: relative;
   place-items: center;
   height: 100%;
-  padding: 116px 0;
+  padding-top: 116px;
 `;
 
 export default ProductsContainer;

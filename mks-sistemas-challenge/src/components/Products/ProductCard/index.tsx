@@ -14,11 +14,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
-    dispatch(itemsCounterActions.increment());
-  };
+    if (!product.amount) product.amount = 1;
 
-  const addProductsHandler = () => {
-    dispatch(itemsCounterActions.addProduct(product));
+    dispatch(itemsCounterActions.increment());
+    dispatch(itemsCounterActions.incrementProduct(product));
   };
 
   return (
@@ -40,12 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <p className="product-description">{product.description}</p>
         </div>
       </CardContainer>
-      <Button
-        onClick={() => {
-          addProductsHandler();
-          incrementHandler();
-        }}
-      >
+      <Button onClick={incrementHandler}>
         <Icon icon="ri:shopping-bag-3-line" width="17" height="17" />
         COMPRAR
       </Button>
