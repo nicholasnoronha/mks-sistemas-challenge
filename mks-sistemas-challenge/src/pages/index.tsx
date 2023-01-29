@@ -1,19 +1,28 @@
-import React, { Fragment } from "react";
-import axios, { AxiosError } from "axios";
+import React from "react";
+import axios from "axios";
+import Header from "@/components/Layout/Header";
+import Products from "@/components/Products/Products";
+import { Product } from "@/interfaces/Product";
+import Cart from "@/components/Cart";
 
-const Home: React.FC = (props: any) => {
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+
+interface ProductsProps {
+  products: Product[];
+}
+
+const Home: React.FC<ProductsProps> = ({ products }) => {
+  const show = useSelector<RootState>(
+    (state) => state.itemsCounterReducer.showCart
+  );
+
   return (
-    <Fragment>
-      <div>Home</div>
-      {props.products.map((product: any) => {
-        return (
-          <p key={product.id}>
-            {product.id}, {product.name}, {product.description}, {product.photo}
-            , {product.price}, {product.brand}
-          </p>
-        );
-      })}
-    </Fragment>
+    <>
+      <Header />
+      <Products products={products} />
+      {show && <Cart />}
+    </>
   );
 };
 
