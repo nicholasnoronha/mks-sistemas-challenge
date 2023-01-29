@@ -35,15 +35,19 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
     <CartItemContainer>
       <img src={product.photo} />
       <p className="product-name">{product.name}</p>
-      <div>
-        <p>Qtd.</p>
-        <div>
-          <button onClick={decrementHandler}>-</button>
-          <p>{product.amount}</p>
-          <button onClick={incrementHandler}>+</button>
+      <div className="cart-product-container">
+        <p className="product-qtt">Qtd.</p>
+        <div className="cart-product-button-container">
+          <button onClick={decrementHandler} className="cart-product-button">
+            -
+          </button>
+          <p className="cart-product-amount">{product.amount}</p>
+          <button onClick={incrementHandler} className="cart-product-button">
+            +
+          </button>
         </div>
       </div>
-      <p>{price}</p>
+      <p className="cart-product-price">{price}</p>
     </CartItemContainer>
   );
 };
