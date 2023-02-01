@@ -1,3 +1,13 @@
+---------------
+
+Para ver o projeto basta acessar o link informado ou rodar os comandos: "npm install" "npm run dev" e acessar a url informada.
+
+## <img src="https://github.com/nicholasnoronha/mks-sistemas-challenge/blob/main/assets/home-page.PNG">
+
+===========================
+
+## <img src="https://github.com/nicholasnoronha/mks-sistemas-challenge/blob/main/assets/home-page-cart-open.PNG">
+
 Diretrizes do desafio
 ===========================
 
