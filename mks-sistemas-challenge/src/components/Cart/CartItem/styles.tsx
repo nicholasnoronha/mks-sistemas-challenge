@@ -11,6 +11,10 @@ const CartItemContainer = styled.div`
   border-radius: 8px;
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.05);
 
+  @media (max-width: 500px) {
+    margin: 28px;
+  }
+
   img {
     max-width: 80px;
     max-height: 70px;

@@ -14,6 +14,10 @@ const CartContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  @media (max-width: 500px) {
+    width: 100vw;
+  }
+
   animation: tog 0.5s;
   animation-direction: normal;
 
@@ -28,8 +32,9 @@ const CartContainer = styled.div`
 
   .d-flex {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 35px 45px;
+    padding: 8% 8%;
   }
 
   .title {
@@ -45,6 +50,7 @@ const CartContainer = styled.div`
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
+    display: flex;
   }
 
   .cart-items-container {
