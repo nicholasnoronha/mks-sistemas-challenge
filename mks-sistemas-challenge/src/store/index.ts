@@ -8,13 +8,13 @@ interface InitialStateType {
   products: Product[];
 }
 
-const initialState: InitialStateType = {
+export const initialState: InitialStateType = {
   showCart: false,
   itemsCounter: 0,
   products: [],
 };
 
-const itemsCounterSlice = createSlice({
+export const itemsCounterSlice = createSlice({
   name: "itemsCounter",
   initialState,
   reducers: {
